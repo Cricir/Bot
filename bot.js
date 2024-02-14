@@ -34,8 +34,8 @@ bot.onText(/\/start/, (msg) => {
     const options = {
         reply_markup: {
             keyboard: [
-                ['/clima', '/guardar'],
-                ['/recuperar']
+                ['🌤️ Clima', '💾 Guardar'],
+                ['🔄 Recuperar']
             ],
             resize_keyboard: true,
             one_time_keyboard: true
@@ -120,6 +120,26 @@ bot.onText(/\/guardar (.+)/, (msg, match) => {
             bot.sendMessage(chatId, 'Datos guardados correctamente.');
         }
     });
+});
+
+/**
+* Explica cómo utilizar el comando '/clima'.
+* @param {Object} msg - El objeto de mensaje recibido.
+*/
+
+bot.onText(/\/guardar/, (msg) => {
+    const chatId = msg.chat.id;
+    const message = `
+Para guardar un mensaje en la db, simplemente escribe /mensaje seguido del nombre de la ciudad.
+
+Por ejemplo:
+/guardar comino
+/guardar Pan
+/guardar queso
+
+¡Espero que esta información te sea útil!
+`;
+    bot.sendMessage(chatId, message);
 });
 
 /**
