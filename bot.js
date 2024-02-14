@@ -45,6 +45,57 @@ bot.onText(/\/start/, (msg) => {
 });
 
 /**
+* Explica cómo utilizar el comando '/clima'.
+* @param {Object} msg - El objeto de mensaje recibido.
+*/
+bot.onText(/🌤️ Clima/, (msg) => {
+    const chatId = msg.chat.id;
+    const message = `
+Para obtener el clima de una ciudad, simplemente escribe /clima seguido del nombre de la ciudad.
+
+Por ejemplo:
+/clima Nueva York
+/clima Madrid
+/clima Londres
+
+¡Espero que esta información te sea útil!
+`;
+    bot.sendMessage(chatId, message);
+});
+
+/**
+* Explica cómo utilizar el comando '/guardar'.
+* @param {Object} msg - El objeto de mensaje recibido.
+*/
+bot.onText(/💾 Guardar/, (msg) => {
+    const chatId = msg.chat.id;
+    const message = `
+Para guardar un mensaje en la base de datos, simplemente escribe /guardar seguido del mensaje que deseas almacenar.
+
+Por ejemplo:
+/guardar Recordatorio importante
+/guardar Número de teléfono de emergencia: 911
+
+¡Espero que esta información te sea útil!
+`;
+    bot.sendMessage(chatId, message);
+});
+
+/**
+* Explica cómo utilizar el comando '/recuperar'.
+* @param {Object} msg - El objeto de mensaje recibido.
+*/
+bot.onText(/🔄 Recuperar/, (msg) => {
+    const chatId = msg.chat.id;
+    const message = `
+Para recuperar los datos guardados, simplemente escribe /recuperar.
+
+¡Espero que esta información te sea útil!
+`;
+    bot.sendMessage(chatId, message);
+});
+
+/**
 * Maneja el evento de recepción de imágenes.
 * @param {Object} msg - El objeto de mensaje recibido.
 */
