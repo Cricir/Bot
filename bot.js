@@ -149,14 +149,18 @@ Por ejemplo:
 bot.onText(/\/recuperar/, (msg) => {
     const chatId = msg.chat.id;
 
-    // Recuperar datos de la base de datos
+    // Recuperar todos los datos de la base de datos
     db.find({ chatId }, (err, docs) => {
         if (err) {
             console.error('Error al recuperar datos:', err);
             bot.sendMessage(chatId, 'Error al recuperar datos.');
         } else {
-            const data = docs.length > 0 ? docs[0].data : 'No hay datos guardados.';
-            bot.sendMessage(chatId, 'Los datos son: ' + data);
+            let message = 'Datos guardados:\n';
+            docs.forEach(doc => {
+                message += `- ${doc.data}\n`;
+            });
+            // Envía los datos recuperados como un mensaje
+            bot.sendMessage(chatId, message);
         }
     });
 });
